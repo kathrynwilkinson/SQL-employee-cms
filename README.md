@@ -4,7 +4,7 @@
 
 A content management system that provides a solution for managing company employees using node, inquirer, and MySQL.
 
-## *Table of Contents*
+## Table of Contents
 
 - [Description](#description)
 - [Installation](#installation)
@@ -30,7 +30,7 @@ A content management system that provides a solution for managing company employ
 
 [DeployedApp] (<>)
 
-<!-- ## Tests -->
+## Tests
 
 ## Questions?
 
@@ -39,3 +39,5 @@ Please feel free to contact me with any questions
 - Github: github.com/NAHco-code
 - LinkedIn: www.linkedin.com/in/kwilkinsonxx
 - Email: kathrynxwilk@gmail.com
+
+&copy; 2021 k.wilkinson
