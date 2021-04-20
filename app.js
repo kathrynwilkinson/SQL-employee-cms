@@ -23,7 +23,9 @@ const questions = [{
 }];
 
 // Define initialization function // Pass questions object as param
-const init = () => inquirer.prompt(questions)
+const init = () => inquirer
+
+    .prompt(questions)
 
     .then((answer) => {
         switch (answer.action) {
@@ -71,6 +73,9 @@ const init = () => inquirer.prompt(questions)
             //     //connection.end();
             //     break;
 
+            //default:
+                //console.log();
+                //break;
        }
     });
 
@@ -79,31 +84,103 @@ const init = () => inquirer.prompt(questions)
     //view employees, roles, depts; add employees, roles, depts;
     //remove employees, roles, depts; update employees, roles, depts;
 const searchEmp = () => {
-    //console.table(Employees)
-    //prompt for employee names, id, role, finished
-}
+    //const query = "";
+    connection.query(), (err, res) => {
+
+        //console.table(res);
+        //console.log();
+    };
+    //init();
+};
 
 const searchRole = () => {
+    connection.query(), (err, res) => {
 
-}
+        //console.table(res);
+        //console.log();
+    };
+    //init();
+};
+
 const searchDept = () => {
+    connection.query(), (err, res) => {
 
-}
+        //console.table(res);
+        //console.log();
+    };
+    //init();
+};
+
 const addEmp = () => {
+    inquirer.prompt([
+        {}, {}, {}, {}
+    ])
+    .then((answer) => {
+        connection.query(), (err, res) => {
 
-}
+            //console.table(res);
+            //console.log();
+        };
+        init();
+    });
+};
+
 const addRole = () => {
+    inquirer.prompt([
+        {}, {}, {}, {}
+    ])
 
-}
+    .then((answer) => {
+        connection.query(), (err, res) => {
+
+            console.table(res);
+            console.log();
+        };
+        init();
+    });
+};
+
 const addDept = () => {
+    inquirer.prompt([
+        {}, {}, {}, {}
+    ])
+    .then((answer) => {
+        connection.query(), (err, res) => {
 
-}
+            console.table(res);
+            console.log();
+        }
+        init();
+    });
+};
+
 const updateEmp = () => {
+    inquirer.prompt([
+        {}, {}, {}, {}
+    ])
+    .then((answer) => {
+        connection.query(), (err, res) => {
 
-}
+            console.table(res);
+            console.log();
+        }
+        init();
+    });
+};
+
 const deleteEmp = () => {
+    inquirer.prompt([
+        {}, {}, {}, {}
+    ])
+    .then((answer) => {
+        connection.query(), (err, res) => {
 
-}
+            console.table(res);
+            console.log();
+        }
+        init();
+    });
+};
 
 // Call initialization function
 init();
