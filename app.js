@@ -17,74 +17,93 @@ const questions = [{
         'Add New Employee',
         'Add New Role',
         'Add New Department',
-        'Update Employee'
+        'Update Employee',
         'Remove Employee',
         'Finished']
 }];
 
 // Define initialization function // Pass questions object as param
-const init = () => {
-    inquirer
-        .prompt(questions);
+const init = () => inquirer.prompt(questions)
 
-        .then((answer) => {
-            switch (answer.action) {
-                case 'View All Employees':
-                    console.log('check1');
-                    searchEmp();
-                    break;
+    .then((answer) => {
+        switch (answer.action) {
+            case 'View All Employees':
+                console.log('check1');
+                searchEmp();
+                break;
 
-                case 'View All Roles':
-                    console.log('check2');
-                    searchRole();
-                    break;
+            case 'View All Roles':
+                console.log('check2');
+                searchRole();
+                break;
 
-                case 'View All Departments':
-                    console.log('check3');
-                    searchDept();
-                    break;
+            case 'View All Departments':
+                console.log('check3');
+                searchDept();
+                break;
 
-                case 'Add New Employee':
-                    console.log('check4');
-                    addEmp();
-                    break;
+            case 'Add New Employee':
+                console.log('check4');
+                addEmp();
+                break;
 
-                case 'Add New Role':
-                    console.log('check5');
-                    addRole();
-                    break;
+            case 'Add New Role':
+                console.log('check5');
+                addRole();
+                break;
 
-                case 'Add New Department':
-                    console.log('check6');
-                    addDept();
-                    break;
+            case 'Add New Department':
+                console.log('check6');
+                addDept();
+                break;
 
-                case 'Update Employee':
-                    console.log('check7');
-                    updateEmp();
-                    break;
+            case 'Update Employee':
+                console.log('check7');
+                updateEmp();
+                break;
 
-                case 'Remove Employee':
-                    console.log('check8');
-                    deleteEmp();
-                    break;
+            case 'Remove Employee':
+                console.log('check8');
+                deleteEmp();
+                break;
 
-                // case 'Finished':
-                //     //connection.end();
-                //     break;
-           }
-       })
-};
+            //case 'Finished':
+            //     //connection.end();
+            //     break;
+
+       }
+    });
 
 
 // Define functions for each switch case
     //view employees, roles, depts; add employees, roles, depts;
     //remove employees, roles, depts; update employees, roles, depts;
-const viewEmployees = () => {
-   console.table(Employees)
-    prompt for employee names, id, role, finished
+const searchEmp = () => {
+    //console.table(Employees)
+    //prompt for employee names, id, role, finished
 }
 
+const searchRole = () => {
+
+}
+const searchDept = () => {
+
+}
+const addEmp = () => {
+
+}
+const addRole = () => {
+
+}
+const addDept = () => {
+
+}
+const updateEmp = () => {
+
+}
+const deleteEmp = () => {
+
+}
 
 // Call initialization function
 init();
