@@ -1,22 +1,50 @@
-// set dependencies
-const { prompt } = require('inquirer');
+// Dependencies
+const inquirer = require('inquirer');
+const mysql2 = require('mysql2');
+const express = require('express');
+//TODO: consider adding classes and models rather than loading database //will effect server speed
 const db = require('./config/connection');
-const Department = require('./models/department');
-const Department = require('./models/role');
-const Department = require('./models/employee');
 
-// constructors
-db.Department = new Department;
-db.Employee = new Employee;
-db.Role = new Role;
 
-// prompts to add, view, update, and delete (departments, roles + employees)
+// Constructors //Sequelize //*Using Schema instead
+// db.Department = new Department();
+// db.Employee = new Employee();
+// db.Role = new Role();
+
+// Prompts to Update, View, Add, and Delete (departments, roles + employees)
 const questions = [{
     type: 'list',
-    name: 'choice',
+    name: 'action',
     message: 'What do you want to do?',
-    choices: ['show all employees', 'show all departments', 'show all roles', 'end app']
+    choices: [
+        'Update Employee',
+        'View All Employees',
+        'View All Roles',
+        'View All Departments',
+        'View All Employees by Department',
+        'Add New Employee',
+        'Add New Role',
+        'Add New Department',
+        'Remove Employee',
+        'Finished']
 }];
+
+//const init = () => {
+    //promptuser()
+    //.then(answer => {
+        //switch (answer.action){
+
+//        }
+//    })
+//}
+
+//const viewEmployees = () => {
+//    console.table(Employees)
+    //prompt for employee names, id, role, finished
+//}
+
+//view employees, view by dept, view by manager, add employee, remove employee, update employee, update role,
+
 
 // async function start() {
 //     try {
@@ -38,3 +66,5 @@ const questions = [{
 //         }
 //     }
 // }
+
+// no need to use models.js if you're using my sql
