@@ -1,6 +1,6 @@
 
 const util = require('util'); //*needed for promise
-const mysql2 = require('mysql2');
+const mysql2 = require('mysql2'); //*needed to create connection
 
 const connection = mysql2.createConnection({
     host: 'localhost',

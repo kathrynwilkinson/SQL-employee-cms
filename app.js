@@ -23,6 +23,20 @@ const questions = [{
 }];
 
 // Define initialization function // Pass questions object as param
+//TODO: how to incorporate promisified connection.query
+
+// const promptUser = () => {
+//     return inquirer.prompt(questions);
+// };
+
+// const init = async () => {
+//     try {
+//         const answers = await promptUser()
+//         await connection.query(answers.action)
+//     } catch (err) {
+//         console.error(err)
+//     }
+
 const init = () => inquirer
 
     .prompt(questions)
