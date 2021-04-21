@@ -1,7 +1,6 @@
 // Dependencies
 const { prompt } = require('inquirer');
-//TODO: consider adding classes and models rather than loading database //will effect server speed
-//*must await
+//*NOTE: best practice in future - add classes and models rather than loading database //will effect server speed
 const connection = require('./config/connection');
 console.log(connection);
 
@@ -28,55 +27,43 @@ console.log(connection);
 
         prompt(questions)
 
-            .then((answer) => {
-                switch (answer.action) {
+            .then((answers) => {
+                switch (answers.action) {
                     case 'View All Employees':
-                        console.log('check1');
                         searchEmp();
                         break;
 
                     case 'View All Roles':
-                        console.log('check2');
                         searchRole();
                         break;
 
                     case 'View All Departments':
-                        console.log('check3');
                         searchDept();
                         break;
 
                     case 'Add New Employee':
-                        console.log('check4');
                         addEmp();
                         break;
 
                     case 'Add New Role':
-                        console.log('check5');
                         addRole();
                         break;
 
                     case 'Add New Department':
-                        console.log('check6');
                         addDept();
                         break;
 
                     case 'Update Employee':
-                        console.log('check7');
                         updateEmp();
                         break;
 
                     case 'Remove Employee':
-                        console.log('check8');
                         deleteEmp();
                         break;
 
-                    //case 'Finished':
-                    //     //connection.end();
-                    //     break;
-
-                    //default:
-                    //console.log();
-                    //break;
+                    case 'Finished':
+                        connection.end();
+                        break;
                 }
             });
     }
@@ -85,44 +72,45 @@ console.log(connection);
     //view employees, roles, depts; add employees, roles, depts;
     //remove employees, roles, depts; update employees, roles, depts;
     const searchEmp = () => {
-        console.log(1)
+
         const query = 'SELECT * FROM employees;';
         connection.query(query, (err, res) => {
-            if (err) console.log(err);
+
+            if (err) throw err;
             console.table(res);
-            console.log(2)
-        //init();
-        })
+        });
+        init();
     };
 
     const searchRole = () => {
-        const query = 'SELECT * FROM roles;'
+        const query = 'SELECT * FROM roles;';
         connection.query(query, (err, res) => {
 
+            if (err) throw err;
             console.table(res);
-            //console.log();
         });
-        //init();
+        init();
     };
 
     const searchDept = () => {
-        connection.query(), (err, res) => {
+        const query = 'SELECT * FROM departments;';
+        connection.query(query, (err, res) => {
 
-            //console.table(res);
-            //console.log();
-        };
-        //init();
+            if (err) throw err;
+            console.table(res);
+        });
+        init();
     };
 
     const addEmp = () => {
         inquirer.prompt([
             {}, {}, {}, {}
         ])
-            .then((answer) => {
+            .then((answers) => {
                 connection.query(), (err, res) => {
 
-                    //console.table(res);
-                    //console.log();
+                    if (err) throw err;
+                    console.table(res);
                 };
                 init();
             });
@@ -130,14 +118,25 @@ console.log(connection);
 
     const addRole = () => {
         inquirer.prompt([
-            {}, {}, {}, {}
+            {
+
+            },
+            {
+
+            },
+            {
+
+            },
+            {
+
+            }
         ])
 
-            .then((answer) => {
+            .then((answers) => {
                 connection.query(), (err, res) => {
 
+                    if (err) throw err;
                     console.table(res);
-                    console.log();
                 };
                 init();
             });
@@ -147,9 +146,10 @@ console.log(connection);
         inquirer.prompt([
             {}, {}, {}, {}
         ])
-            .then((answer) => {
+            .then((answers) => {
                 connection.query(), (err, res) => {
 
+                    if (err) throw err;
                     console.table(res);
                     console.log();
                 }
@@ -161,9 +161,10 @@ console.log(connection);
         inquirer.prompt([
             {}, {}, {}, {}
         ])
-            .then((answer) => {
+            .then((answers) => {
                 connection.query(), (err, res) => {
 
+                    if (err) throw err;
                     console.table(res);
                     console.log();
                 }
@@ -175,9 +176,10 @@ console.log(connection);
         inquirer.prompt([
             {}, {}, {}, {}
         ])
-            .then((answer) => {
+            .then((answers) => {
                 connection.query(), (err, res) => {
 
+                    if (err) throw err;
                     console.table(res);
                     console.log();
                 }
