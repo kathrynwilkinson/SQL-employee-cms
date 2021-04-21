@@ -10,9 +10,7 @@ const connection = mysql.createConnection({
     database: 'employee_db',
 });
 
-// Promise wrapper
-// don't replace built in methods with your own methods
-// mysql2 is promise based //don't need to replace query method
-// connection.query = util.promisify(connection.query);
+console.clear();
+console.log('Hello, how can I help you today?')
 
 module.exports = connection;

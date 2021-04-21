@@ -1,9 +1,8 @@
 // Dependencies
-const { prompt } = require('inquirer');
+const { prompt } = require('inquirer'); // Load the prompt module only from the inquirer package //improves server speed
+const cTable = require('console.table');
 //*NOTE: best practice in future - add classes and models rather than loading database //will effect server speed
 const connection = require('./config/connection');
-console.log(connection);
-
 
     // Prompts to Update, View, Add, and Delete (departments, roles + employees)
     const questions = [{
@@ -77,6 +76,7 @@ console.log(connection);
         connection.query(query, (err, res) => {
 
             if (err) throw err;
+            console.log('***Viewing all Employees***');
             console.table(res);
         });
         init();
@@ -87,6 +87,7 @@ console.log(connection);
         connection.query(query, (err, res) => {
 
             if (err) throw err;
+            console.log('***Viewing all Roles***');
             console.table(res);
         });
         init();
@@ -97,96 +98,99 @@ console.log(connection);
         connection.query(query, (err, res) => {
 
             if (err) throw err;
+            console.log('***Viewing all Departments***');
             console.table(res);
         });
         init();
     };
 
     const addEmp = () => {
-        inquirer.prompt([
-            {}, {}, {}, {}
+        prompt([
+            { type: 'input', name: 'first_name', message: 'New employee`s first name?'},
+            { type: 'input', name: 'last_name', message: 'New employee`s last name?'},
+            { type: 'input', name: 'id', message: 'New employee`s id number?'},
+            { type: 'input', name: 'role_id', message: 'New employee`s role id number?' },
+            { type: 'input', name: 'manager_id', message: 'New employee`s manager id number?' }
         ])
             .then((answers) => {
-                connection.query(), (err, res) => {
+                const query = 'SELECT * FROM;';
+                connection.query(query, (err, res) => {
 
                     if (err) throw err;
+                    console.log('***New employee successfully added!***');
                     console.table(res);
-                };
+                });
                 init();
             });
     };
 
     const addRole = () => {
-        inquirer.prompt([
-            {
-
-            },
-            {
-
-            },
-            {
-
-            },
-            {
-
-            }
+        prompt([
+            { type: 'input', name: 'title', message: 'Employee`s title?' },
+            { type: 'input', name: 'salary', message: 'Employee`s salary?' },
+            { type: 'input', name: 'id', message: 'Employee`s role id number?' },
+            { type: 'input', name: 'department_id', message: 'Employee`s department id number?' }
         ])
 
             .then((answers) => {
-                connection.query(), (err, res) => {
+                const query = 'SELECT * FROM;';
+                connection.query(query, (err, res) => {
 
                     if (err) throw err;
+                    console.log('***New role successfully added!***');
                     console.table(res);
-                };
+                });
                 init();
             });
     };
 
     const addDept = () => {
-        inquirer.prompt([
-            {}, {}, {}, {}
+        prompt([
+            { type: 'input', name: 'department_name', message: 'New department name?' },
+            { type: 'input', name: 'id', message: 'New department id number?' }
         ])
             .then((answers) => {
-                connection.query(), (err, res) => {
+                const query = 'SELECT * FROM;';
+                connection.query(query, (err, res) => {
 
                     if (err) throw err;
+                    console.log('***New department successfully added!***');
                     console.table(res);
-                    console.log();
-                }
+                })
                 init();
             });
     };
 
     const updateEmp = () => {
-        inquirer.prompt([
-            {}, {}, {}, {}
+        prompt([
+            { type: 'input', name: 'title', message: 'Employee`s updated first name?' },
+            { type: 'input', name: 'salary', message: 'Employee`s updated last name?' },
+            { type: 'input', name: 'id', message: 'Employee`s updated id number?' },
+            { type: 'input', name: 'role_id', message: 'Employee`s updated role id number?' },
+            { type: 'input', name: 'manager_id', message: 'Employee`s updated manager id number?' }
         ])
             .then((answers) => {
-                connection.query(), (err, res) => {
+                const query = 'SELECT * FROM;';
+                connection.query(query, (err, res) => {
 
                     if (err) throw err;
+                    console.log('***Employee successfully updated!***');
                     console.table(res);
-                    console.log();
-                }
+                })
                 init();
             });
     };
 
     const deleteEmp = () => {
-        inquirer.prompt([
-            {}, {}, {}, {}
-        ])
-            .then((answers) => {
-                connection.query(), (err, res) => {
+        const query = 'SELECT * FROM employees;';
+        connection.query(query, (err, res) => {
 
-                    if (err) throw err;
-                    console.table(res);
-                    console.log();
-                }
-                init();
-            });
+            if (err) throw err;
+            console.log('***Employee successfully deleted!***');
+            console.table(res);
+        });
+        init();
     };
 
     //Call initialization function
     init();
-// }) ()
