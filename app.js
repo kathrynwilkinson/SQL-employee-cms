@@ -157,8 +157,8 @@ const connection = require('./config/connection');
 
     const addDept = () => {
         prompt([
-            { type: 'input', name: 'department_name', message: 'New department name?' },
-            { type: 'input', name: 'id', message: 'New department id number?' }
+            { type: 'input', name: 'department_name', message: 'Name of New Department?' },
+            { type: 'input', name: 'id', message: 'ID number of New Department?' }
         ])
             .then((answers) => {
                 const query = `INSERT INTO departments (department_name, id) VALUES ('${answers.department_name}', ${answers.id});`;
