@@ -108,39 +108,50 @@ const connection = require('./config/connection');
         prompt([
             { type: 'input', name: 'first_name', message: 'New employee`s first name?'},
             { type: 'input', name: 'last_name', message: 'New employee`s last name?'},
-            { type: 'input', name: 'id', message: 'New employee`s id number?'},
+            { type: 'input', name: 'id', message: 'New employee`s id number?' },
+            { type: 'input', name: 'role_title', message: 'New employee`s role title?' },
             { type: 'input', name: 'role_id', message: 'New employee`s role id number?' },
             { type: 'input', name: 'manager_id', message: 'New employee`s manager id number?' }
         ])
             .then((answers) => {
-                const query = 'SELECT * FROM;';
-                connection.query(query, (err, res) => {
+
+                const query1 = `INSERT INTO roles (title, id) VALUES ('${answers.role_title}', ${answers.role_id});`;
+                connection.query(query1, (err, res) => {
+
+                    if (err) throw err;
+                });
+                const query2 = `INSERT INTO employees (first_name, last_name, id, role_id, manager_id) VALUES ('${answers.first_name}', '${answers.last_name}', ${answers.id}, ${answers.role_id}, ${answers.manager_id});`;
+                connection.query(query2, (err, res) => {
 
                     if (err) throw err;
                     console.log('***New employee successfully added!***');
-                    console.table(res);
                 });
-                init();
+                searchEmp();
             });
     };
 
     const addRole = () => {
         prompt([
-            { type: 'input', name: 'title', message: 'Employee`s title?' },
-            { type: 'input', name: 'salary', message: 'Employee`s salary?' },
-            { type: 'input', name: 'id', message: 'Employee`s role id number?' },
-            { type: 'input', name: 'department_id', message: 'Employee`s department id number?' }
+            { type: 'input', name: 'title', message: 'Name of New Role?' },
+            { type: 'input', name: 'salary', message: 'Salary of New Role?' },
+            { type: 'input', name: 'id', message: 'ID number of New Role?' },
+            { type: 'input', name: 'department_name', message: 'Which department is this New Role under?' },
+            { type: 'input', name: 'department_id', message: 'ID number of selected department?' }
         ])
 
             .then((answers) => {
-                const query = 'SELECT * FROM;';
-                connection.query(query, (err, res) => {
+                const query1 = `INSERT INTO departments (department_name, id) VALUES ('${answers.department_name}', ${answers.department_id});`;
+                connection.query(query1, (err, res) => {
+
+                    if (err) throw err;
+                });
+                const query2 = `INSERT INTO roles (title, salary, id, department_id) VALUES ('${answers.title}', ${answers.salary}, ${answers.id}, ${answers.department_id});`;
+                connection.query(query2, (err, res) => {
 
                     if (err) throw err;
                     console.log('***New role successfully added!***');
-                    console.table(res);
                 });
-                init();
+                searchRole();
             });
     };
 
@@ -150,14 +161,13 @@ const connection = require('./config/connection');
             { type: 'input', name: 'id', message: 'New department id number?' }
         ])
             .then((answers) => {
-                const query = 'SELECT * FROM;';
+                const query = `INSERT INTO departments (department_name, id) VALUES ('${answers.department_name}', ${answers.id});`;
                 connection.query(query, (err, res) => {
 
                     if (err) throw err;
                     console.log('***New department successfully added!***');
-                    console.table(res);
                 })
-                init();
+                searchDept();
             });
     };
 
