@@ -53,12 +53,12 @@ const connection = require('./config/connection');
                         break;
 
                     case 'Update Employee':
-                        updateEmp();
+                        updateEmpRole();
                         break;
 
-                    case 'Remove Employee':
-                        deleteEmp();
-                        break;
+                    // case 'Remove Employee':
+                    //     deleteEmp();
+                    //     break;
 
                     case 'Finished':
                         connection.end();
@@ -171,36 +171,33 @@ const connection = require('./config/connection');
             });
     };
 
-    const updateEmp = () => {
+    const updateEmpRole = () => {
         prompt([
-            { type: 'input', name: 'title', message: 'Employee`s updated first name?' },
-            { type: 'input', name: 'salary', message: 'Employee`s updated last name?' },
-            { type: 'input', name: 'id', message: 'Employee`s updated id number?' },
-            { type: 'input', name: 'role_id', message: 'Employee`s updated role id number?' },
-            { type: 'input', name: 'manager_id', message: 'Employee`s updated manager id number?' }
+            { type: 'input', name: 'id', message: 'Employee`s ID number?' },
+            { type: 'input', name: 'role_id', message: 'Employee`s Updated Role ID number?' }
         ])
             .then((answers) => {
-                const query = 'SELECT * FROM;';
+                const query = `UPDATE employees SET role_id = ${answers.role_id} WHERE id = ${answers.id};`;
                 connection.query(query, (err, res) => {
 
                     if (err) throw err;
                     console.log('***Employee successfully updated!***');
-                    console.table(res);
                 })
-                init();
+                searchEmp();
+                searchRole();
             });
     };
 
-    const deleteEmp = () => {
-        const query = 'SELECT * FROM employees;';
-        connection.query(query, (err, res) => {
+    // const deleteEmp = () => {
+    //     const query = 'SELECT * FROM employees;';
+    //     connection.query(query, (err, res) => {
 
-            if (err) throw err;
-            console.log('***Employee successfully deleted!***');
-            console.table(res);
-        });
-        init();
-    };
+    //         if (err) throw err;
+    //         console.log('***Employee successfully deleted!***');
+    //         console.table(res);
+    //     });
+    //     init();
+    // };
 
     //Call initialization function
     init();
