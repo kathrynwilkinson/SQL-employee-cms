@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "npm test",
-    "seed": "node seed.js",
-    "start": "npm start"
+    "seed": "node seed.sql",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

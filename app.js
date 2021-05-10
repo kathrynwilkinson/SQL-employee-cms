@@ -108,14 +108,11 @@ const connection = require('./config/connection');
         prompt([
             { type: 'input', name: 'first_name', message: 'New employee`s first name?'},
             { type: 'input', name: 'last_name', message: 'New employee`s last name?'},
-            { type: 'input', name: 'id', message: 'New employee`s id number?' },
-            { type: 'input', name: 'role_title', message: 'New employee`s role title?' },
-            { type: 'input', name: 'role_id', message: 'New employee`s role id number?' },
-            { type: 'input', name: 'manager_id', message: 'New employee`s manager id number?' }
+            { type: 'input', name: 'role_title', message: 'New employee`s role title?' }
         ])
             .then((answers) => {
 
-                const query1 = `INSERT INTO roles (title, id) VALUES ('${answers.role_title}', ${answers.role_id});`;
+                const query1 = `INSERT INTO roles (title, id, department_id) VALUES ('${answers.role_title}', ${answers.role_id});`;
                 connection.query(query1, (err, res) => {
 
                     if (err) throw err;
@@ -134,18 +131,16 @@ const connection = require('./config/connection');
         prompt([
             { type: 'input', name: 'title', message: 'Name of New Role?' },
             { type: 'input', name: 'salary', message: 'Salary of New Role?' },
-            { type: 'input', name: 'id', message: 'ID number of New Role?' },
             { type: 'input', name: 'department_name', message: 'Which department is this New Role under?' },
-            { type: 'input', name: 'department_id', message: 'ID number of selected department?' }
         ])
 
             .then((answers) => {
-                const query1 = `INSERT INTO departments (department_name, id) VALUES ('${answers.department_name}', ${answers.department_id});`;
+                const query1 = `INSERT INTO departments (department_name, id) VALUES ('${answers.department_name}'`;
                 connection.query(query1, (err, res) => {
 
                     if (err) throw err;
                 });
-                const query2 = `INSERT INTO roles (title, salary, id, department_id) VALUES ('${answers.title}', ${answers.salary}, ${answers.id}, ${answers.department_id});`;
+                const query2 = `INSERT INTO roles (title, salary, id, department_id) VALUES ('${answers.title}', ${answers.salary}`;
                 connection.query(query2, (err, res) => {
 
                     if (err) throw err;
