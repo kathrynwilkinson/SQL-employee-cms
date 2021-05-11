@@ -2,11 +2,11 @@
   "name": "sql-employee-tracker",
   "version": "1.0.0",
   "description": "Content Management System",
-  "main": "app.js",
+  "main": "./main/app.js",
   "scripts": {
     "test": "npm test",
     "seed": "node seed.sql",
-    "start": "node app.js"
+    "start": "node ./main/app.js"
   },
   "repository": {
     "type": "git",

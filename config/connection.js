@@ -11,6 +11,6 @@ const connection = mysql.createConnection({
 });
 
 console.clear();
-console.log('Hello, how can I help you today?')
+console.log('Hello, how can I help you today?');
 
 module.exports = connection;
