@@ -86,7 +86,7 @@ const searchEmp = () => {
 };
 
 const searchRole = () => {
-    const query = 'SELECT roles.id, roles.title, roles.salary, departments.dept, managers.manager_title, managers.manager_fname, managers.manager_lname FROM managers LEFT JOIN roles ON managers.role_id = roles.id LEFT JOIN departments ON managers.dept_id = departments.id;';
+    const query = 'SELECT roles.id, roles.title, roles.salary, departments.dept FROM roles LEFT JOIN departments ON roles.dept_id = departments.id;';
     connection.query(query, (err, res) => {
 
         if (err) throw err;
@@ -162,7 +162,7 @@ const addEmp = () => {
     });
 };
 
-const addRole = async () => {
+const addRole = () => {
 
     const queryDeptChoices = 'SELECT * FROM departments';
 
@@ -188,12 +188,15 @@ const addRole = async () => {
                 if (err) throw err;
                 const departments = res.find(departments => departments.dept === answers.newRoleDept);
 
-                const queryAddRole = `INSERT INTO roles (title, salary, dept_id) VALUES ('${answers.newRoleTitle}', ${answers.newRoleSalary}, ${departments.id});`;
-
-                connection.query(queryAddRole, (err, res) => {
-
+                const queryAddRole = 'INSERT INTO roles Set ?';
+                connection.query(queryAddRole,
+                {
+                    title: answers.newRoleTitle,
+                    salary: answers.newRoleSalary,
+                    dept_id: departments.id
+                }, (err, res) => {
                     if (err) throw err;
-                    console.log('\n\n\n*** New Role successfully added! ***\n');
+                    console.table(res);
                 });
                 searchRole();
             });
