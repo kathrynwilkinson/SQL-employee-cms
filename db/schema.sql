@@ -6,7 +6,7 @@ USE employee_db;
 
 CREATE TABLE departments (
   id INT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(30) NOT NULL,
+  dept VARCHAR(30) NOT NULL,
   PRIMARY KEY(id)
 );
 
@@ -21,9 +21,9 @@ CREATE TABLE roles (
 
 CREATE TABLE managers (
   id INT NOT NULL AUTO_INCREMENT,
-  first_name VARCHAR(30) NOT NULL,
-  last_name VARCHAR(30) NOT NULL,
-  title VARCHAR(30) NOT NULL,
+  manager_fname VARCHAR(30) NOT NULL,
+  manager_lname VARCHAR(30) NOT NULL,
+  manager_title VARCHAR(30) NOT NULL,
   dept_id INT NOT NULL,
   role_id INT NOT NULL,
   PRIMARY KEY(id),

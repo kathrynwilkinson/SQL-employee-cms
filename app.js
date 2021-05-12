@@ -57,9 +57,9 @@ const init = () => {
                     updateEmpRole();
                     break;
 
-                // case 'Remove Employee':
-                //     deleteEmp();
-                //     break;
+                case 'Remove Employee':
+                    deleteEmp();
+                    break;
 
                 case 'Finished':
                     connection.end();
@@ -74,34 +74,36 @@ const init = () => {
 //remove employees, roles, depts; update employees, roles, depts;
 const searchEmp = () => {
 
-    const query = 'SELECT employees.id, employees.first_name, employees.last_name, roles.title, roles.salary, departments.title, employees.manager_id FROM employees LEFT JOIN roles ON employees.role_id = roles.id LEFT JOIN departments ON roles.dept_id = departments.id;';
+    const query = 'SELECT employees.id, employees.first_name, employees.last_name, roles.title, roles.salary, departments.dept, managers.manager_fname, managers.manager_lname, managers.manager_title FROM employees LEFT JOIN managers ON employees.manager_id = managers.id LEFT JOIN roles ON employees.role_id = roles.id LEFT JOIN departments ON employees.dept_id = departments.id; ';
     connection.query(query, (err, res) => {
 
         if (err) throw err;
         console.log(`\n
-        ***Viewing all ${res.length} Employees*** \n`);
+        *** Viewing all ${res.length} Employees *** \n`);
         console.table(res);
     });
     init();
 };
 
 const searchRole = () => {
-    const query = 'SELECT * FROM roles;';
+    const query = 'SELECT roles.id, roles.title, roles.salary, departments.dept, managers.manager_title, managers.manager_fname, managers.manager_lname FROM managers LEFT JOIN roles ON managers.role_id = roles.id LEFT JOIN departments ON managers.dept_id = departments.id;';
     connection.query(query, (err, res) => {
 
         if (err) throw err;
-        console.log('***Viewing all Roles***');
+        console.log(`\n
+        *** Viewing all ${res.length} Roles *** \n`);
         console.table(res);
     });
     init();
 };
 
 const searchDept = () => {
-    const query = 'SELECT * FROM departments;';
+    const query = 'SELECT departments.id, departments.dept, roles.title, managers.manager_title, managers.manager_fname, managers.manager_lname FROM managers LEFT JOIN roles ON managers.role_id = roles.id LEFT JOIN departments ON managers.dept_id = departments.id;';
     connection.query(query, (err, res) => {
 
         if (err) throw err;
-        console.log('***Viewing all Departments***');
+        console.log(`\n
+        *** Viewing all Departments *** \n`);
         console.table(res);
     });
     init();
@@ -150,10 +152,12 @@ const addEmp = () => {
                             console.log('***New employee successfully added!***');
                         });
                     });
+                    searchEmp();
                 });
         });
     });
-    searchEmp();           //const query = `INSERT INTO employees (first_name, last_name, ,dept_id, role_id, manager_id) VALUES ('${answers.first_name}', '${answers.last_name}', ${answers.dept_id}, ${answers.role_id}, ${answers.manager_id});`;
+              //const query = `INSERT INTO employees (first_name, last_name, ,dept_id, role_id, manager_id) VALUES ('${answers.first_name}', '${answers.last_name}', ${answers.dept_id}, ${answers.role_id}, ${answers.manager_id});`;
+    init();
 };
 
 const addRole = () => {
@@ -179,6 +183,7 @@ const addRole = () => {
             });
             searchRole();
         });
+    init();
 };
 
 const addDept = () => {
@@ -195,6 +200,7 @@ const addDept = () => {
             })
             searchDept();
         });
+    init();
 };
 
 const updateEmpRole = () => {
@@ -212,6 +218,7 @@ const updateEmpRole = () => {
             searchEmp();
             searchRole();
         });
+    init();
 };
 
 // const deleteEmp = () => {

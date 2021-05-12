@@ -1,14 +1,16 @@
 USE employee_db;
-INSERT INTO departments(id, title)
+INSERT INTO departments(id, dept)
 VALUES
 (001, "Sales"),
 (002, "Marketing"),
 (003, "Engineering"),
 (004, "Finance"),
 (005, "Legal"),
+(007, "Board of Directors"),
 (009, "Education");
 INSERT INTO roles(id, title, salary, dept_id)
 VALUES
+(10, "Administration", 200000, 007),
 (40, "Sales Management", 60000, 001),
 (41, "Sales Representative", 40000, 001),
 (42, "Sales Intern", 20000, 001),
@@ -27,8 +29,9 @@ VALUES
 (81, "Senior Corporate Counsel", 110000, 005),
 (82, "Laywer", 65000, 005),
 (90, "Education Management", 55000, 009);
-INSERT INTO managers(id, first_name, last_name, title, dept_id, role_id)
+INSERT INTO managers(id, manager_fname, manager_lname, manager_title, dept_id, role_id)
 VALUES
+(1001, "Teddy", "Altman", "Chief Executive Officer",007, 10),
 (4001, "Danielle", "Moro", "Sales Staff Manager",001, 40),
 (5001, "Nicholas", "Moro", "Creative Concept Director",002, 50),
 (5002, "Danielle", "Grosh", "Digital Marketing Director",002, 50),
@@ -38,27 +41,27 @@ VALUES
 (9000, "Derek", "Shepard", "Education Director",009, 90);
 INSERT INTO employees(id, first_name, last_name, dept_id, role_id, manager_id)
 VALUES
-(4001, "Danielle", "Moro",001, 40, NULL),
+(4001, "Danielle", "Moro",001, 40, 1001),
 (4101, "Lynette", "Price", 001, 41, 4001),
 (4201, "Hugh", "Bailey", 001, 42, 9000),
 (4202, "Dolores", "Schneider", 001, 42, 9000),
-(5001, "Nicholas", "Moro",002, 50, NULL),
-(5002, "Danielle", "Grosh",002, 50, NULL),
+(5001, "Nicholas", "Moro",002, 50, 1001),
+(5002, "Danielle", "Grosh",002, 50, 1001),
 (5101, "Jeanette", "Watkins", 002, 51, 5001),
 (5201, "Mike", "Web", 002, 52, 5001),
 (5202, "Eileen", "Jensen", 002, 52, 5001),
 (5301, "Lela", "Freeman", 002, 53, 9000),
-(6001, "Josephine", "Karev", 003, 60, NULL),
+(6001, "Josephine", "Karev", 003, 60, 1001),
 (6101, "Oliver", "Higgins", 003, 61, 6001),
 (6201, "Casey", "Cooper", 003, 62, 9000),
 (6202, "Alan", "Zimmerman", 003, 62, 9000),
-(7001, "Alexander", "Karev", 004, 70, NULL),
+(7001, "Alexander", "Karev", 004, 70, 1001),
 (7101, "Kim", "McCormick", 004, 71, 7001),
 (7201, "Antonio", "Page", 004, 72, 7001),
 (7202, "Hannah", "Porter", 004, 72, 7001),
 (7301, "Andrew", "DeLuca", 004, 73, 9000),
-(8001, "Meredith", "Grey", 005, 80, NULL),
+(8001, "Meredith", "Grey", 005, 80, 1001),
 (8101, "Bradley", "McLaughlin", 005, 81, 8001),
 (8201, "Nancy", "Cobb", 005, 82, 8001),
 (8202, "Seth", "Long", 005, 82, 8001),
-(9000, "Derek", "Shepard" ,009, 90, NULL);
+(9000, "Derek", "Shepard" ,009, 90, 1001);
