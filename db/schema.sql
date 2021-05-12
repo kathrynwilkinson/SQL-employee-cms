@@ -21,9 +21,9 @@ CREATE TABLE roles (
 
 CREATE TABLE managers (
   id INT NOT NULL AUTO_INCREMENT,
-  manager_fname VARCHAR(30) NOT NULL,
-  manager_lname VARCHAR(30) NOT NULL,
-  manager_title VARCHAR(30) NOT NULL,
+  manager_fname VARCHAR(30) DEFAULT '' NOT NULL,
+  manager_lname VARCHAR(30) DEFAULT '' NOT NULL,
+  manager_title VARCHAR(30) DEFAULT 'TBD' NOT NULL,
   dept_id INT NOT NULL,
   role_id INT NOT NULL,
   PRIMARY KEY(id),
