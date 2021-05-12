@@ -7,7 +7,7 @@ USE employee_db;
 DROP TABLE IF EXISTS departments;
 CREATE TABLE departments (
   id INT NOT NULL AUTO_INCREMENT,
-  department_name VARCHAR(30) NOT NULL,
+  title VARCHAR(30) NOT NULL,
   PRIMARY KEY(id)
 );
 
@@ -24,7 +24,8 @@ CREATE TABLE roles (
 DROP TABLE IF EXISTS managers;
 CREATE TABLE managers (
   id INT NOT NULL AUTO_INCREMENT,
-  full_name VARCHAR(30) NOT NULL,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
   title VARCHAR(30) NOT NULL,
   dept_id INT NOT NULL,
   role_id INT NOT NULL,
@@ -36,7 +37,8 @@ CREATE TABLE managers (
 DROP TABLE IF EXISTS employees;
 CREATE TABLE employees (
   id INT NOT NULL AUTO_INCREMENT,
-  full_name VARCHAR(50) NOT NULL,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
   dept_id INT NOT NULL,
   role_id INT NOT NULL,
   manager_id INT,
