@@ -98,7 +98,7 @@ const searchRole = () => {
 };
 
 const searchDept = () => {
-    const query = 'SELECT departments.id, departments.dept, roles.title, managers.manager_title, managers.manager_fname, managers.manager_lname FROM managers LEFT JOIN roles ON managers.role_id = roles.id LEFT JOIN departments ON managers.dept_id = departments.id;';
+    const query = 'SELECT * FROM departments';
     connection.query(query, (err, res) => {
 
         if (err) throw err;
@@ -156,8 +156,10 @@ const addEmp = () => {
                     }, (err, res) => {
                         if (err) throw err
                         console.log('\n\n\n*** New Employee successfully added! ***\n')
+
+                        searchEmp();
                     });
-            }); searchEmp();
+            });
         });
     });
 };
@@ -197,8 +199,10 @@ const addRole = () => {
                 }, (err, res) => {
                     if (err) throw err;
                     console.table(res);
+                    console.log('\n\n\n*** New Role successfully added! ***\n')
+
+                    searchRole();
                 });
-                searchRole();
             });
         });
     });
@@ -206,49 +210,125 @@ const addRole = () => {
 
 const addDept = () => {
     prompt([
-        { type: 'input', name: 'department_name', message: 'Name of New Department?' },
-        { type: 'input', name: 'id', message: 'ID number of New Department?' }
+        { type: 'input', name: 'newDept', message: 'Name of New Department?' }
     ])
-        .then((answers) => {
-            const query = `INSERT INTO departments (department_name, id) VALUES ('${answers.department_name}', ${answers.id});`;
-            connection.query(query, (err, res) => {
-
+    .then((answers) => {
+        const queryAddDept = 'INSERT INTO departments SET ?';
+        connection.query(queryAddDept,
+            {
+                dept: answers.newDept
+            }, (err, res) => {
                 if (err) throw err;
-                console.log('***New department successfully added!***');
-            })
-            searchDept();
-        });
-    init();
+                console.table(res);
+                console.log('*** New Department successfully added! ***');
+
+                searchDept();
+            });
+    });
 };
 
 const updateEmpRole = () => {
-    prompt([
-        { type: 'input', name: 'id', message: 'Employee`s ID number?' },
-        { type: 'input', name: 'role_id', message: 'Employee`s Updated Role ID number?' }
-    ])
-        .then((answers) => {
-            const query = `UPDATE employees SET role_id = ${answers.role_id} WHERE id = ${answers.id};`;
-            connection.query(query, (err, res) => {
 
-                if (err) throw err;
-                console.log('***Employee successfully updated!***');
-            })
-            searchEmp();
-            searchRole();
+    const queryEmpChoices = 'SELECT CONCAT(employees.first_name, " ", employees.last_name) AS empName FROM employees';
+
+    connection.query(queryEmpChoices, (err, res) => {
+        let empChoices = res.map(function (res) {
+            return res['empName'];
         });
-    init();
+
+        connection.query('SELECT roles.title FROM roles', (err, res) => {
+            let roleChoices = res.map(function (res) {
+                return res['title'];
+            });
+
+            prompt([
+                {
+                    type: 'list', name: 'updateEmp', message: 'Which employee would you like to update?',
+                    choices: empChoices
+                },
+                {
+                    type: 'list', name: 'roles', message: 'Employee`s new role?',
+                    choices: roleChoices
+                }
+            ])
+                .then((answers) => {
+                    const queryRoles = 'SELECT * FROM roles';
+                    connection.query(queryRoles, (err, res) => {
+
+                        if (err) throw err;
+                        const roles = res.find(roles => roles.title === answers.roles);
+
+                        const queryEmps = 'SELECT * FROM employees';
+                        connection.query(queryEmps, (err, res) => {
+
+                            if (err) throw err;
+                            let fullName = answers.updateEmp.split(' ');
+                            const employees = res.find(employees => employees.first_name === fullName[0] && employees.last_name === fullName[1]);
+
+                            const queryUpdate = 'UPDATE employees SET ? WHERE ?';
+                            connection.query(queryUpdate,
+                                [
+                                    {
+                                        role_id: roles.id,
+                                    },
+                                    {
+                                        id: employees.id
+                                    }
+                                ], (err, res) => {
+                                    if (err) throw err;
+                                    console.table(res);
+                                    console.log('\n\n\n*** Employee Role successfully udpated! ***\n')
+
+                                    searchEmp();
+                                });
+                        });
+                    });
+                });
+        });
+    });
 };
 
-// const deleteEmp = () => {
-//     const query = 'SELECT * FROM employees;';
-//     connection.query(query, (err, res) => {
+const deleteEmp = () => {
 
-//         if (err) throw err;
-//         console.log('***Employee successfully deleted!***');
-//         console.table(res);
-//     });
-//     init();
-// };
+    const queryEmpChoices = 'SELECT CONCAT(employees.first_name, " ", employees.last_name) AS empName FROM employees';
+
+    connection.query(queryEmpChoices, (err, res) => {
+        let empChoices = res.map(function (res) {
+            return res['empName'];
+        });
+
+        prompt([
+            {
+                type: 'list', name: 'deleteEmp', message: 'Which employee would you like to remove?',
+                choices: empChoices
+            }
+        ])
+            .then((answers) => {
+
+                const queryEmps = 'SELECT id, first_name, last_name FROM employees';
+                connection.query(queryEmps, (err, res) => {
+
+                    if (err) throw err;
+                    let fullName = answers.deleteEmp.split(' ');
+                    const employees = res.find(employees => employees.first_name === fullName[0] && employees.last_name === fullName[1]);
+
+                    const queryUpdate = 'DELETE FROM employees WHERE ?';
+                    connection.query(queryUpdate,
+                        {
+                            id: employees.id
+                        },
+                        (err, res) => {
+                            if (err) throw err;
+                            console.table(res);
+                            console.log('\n\n\n*** Employee successfully removed ***\n')
+
+                            searchEmp();
+                        });
+                });
+            });
+    });
+};
+
 
 //Call initialization function
 init();
