@@ -10,8 +10,8 @@ A content management system that provides a solution for managing company employ
 - [Installation](#installation)
 - [Usage](#usage)
 - [Tech](#technologies)
-- [Contributing](#contributing)
 - [Visuals](#visuals)
+- [Contributing](#contributing)
 - [Contact Me](#questions)
 - [License](#license)
 
@@ -40,6 +40,11 @@ After installation, run 'npm start' in the command-line to access the prompts an
 - inquirer
 - MySQL
 
+## Visuals
+
+Link to youtube DEMO:
+[![DEMO](http://img.youtube.com/vi/jmX0KIJsU0A/0.jpg)](http://www.youtube.com/watch?v=jmX0KIJsU0A "")
+
 ## Contributing
 
 Sole Author: k.wilkinson
@@ -47,10 +52,6 @@ Sole Author: k.wilkinson
 This project was completed as an individual assignment for The Ohio State University Coding Boot Camp.
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
-
-## Visuals
-
-[![DEMO](http://img.youtube.com/vi/jmX0KIJsU0A/0.jpg)](http://www.youtube.com/watch?v=jmX0KIJsU0A "")
 
 ## Questions?
 
