@@ -9,41 +9,48 @@ A content management system that provides a solution for managing company employ
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contribute](#contribute)
+- [Tech](#technologies)
+- [Contributing](#contributing)
 - [Visuals](#visuals)
-- [Tests](#tests)
 - [Contact Me](#questions)
 - [License](#license)
 
 ## Description
 
-Project in progress.
+This SQL CMS is a command-line application that allows a business owner to view and manage departments, roles, and employees in the company.
+
+User is able to:
+    - view employees, roles and departments
+    - add employees, roles and departments
+    - update employee roles
+    - delete employees
 
 ## Installation
 
-Installation.
+Clone the repository and open it in your preferred code editor.
+Navigate to the root folder in your command-line and run 'npm i' to install dependencies.
 
 ## Usage
 
-Usage.
+After installation, run 'npm start' in the command-line to access the prompts and start the app. Use up and down arrow keys to navigate the options. Selecting 'Finished' will exit the application.
 
-## Contribute
+## Technologies
 
-If you have something you'd like to contribute, make a pull request!
+- node.js
+- inquirer
+- MySQL
+
+## Contributing
+
+Sole Author: k.wilkinson
+
+This project was completed as an individual assignment for The Ohio State University Coding Boot Camp.
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
 
 ## Visuals
 
-![screenshot]()
-
-![screenshot]()
-
-[DeployedApp] (<>)
-
-## Tests
-
-Tests.
+[![DEMO](http://img.youtube.com/vi/jmX0KIJsU0A/0.jpg)](http://www.youtube.com/watch?v=jmX0KIJsU0A "")
 
 ## Questions?
 

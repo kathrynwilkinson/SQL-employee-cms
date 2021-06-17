@@ -126,13 +126,10 @@ const addEmp = () => {
         let roleChoices = res.map(function (res) {
             return res['title'];
         });
-        console.log( res );
         let roles = res;
-        console.log(roleChoices);
         connection.query( `SELECT employees.first_name, employees.last_name, employees.role_id, roles.title FROM employees INNER JOIN roles ON employees.role_id = roles.id WHERE employees.is_mangr=TRUE;`, ( err, res ) => {
             let managerChoices = res.map( function ( res ) {
                 return {name: res.first_name + ' ' + res.last_name+ ": " + res.title,value: res.role_id};
-                console.log( managerChoices );
             } );
 
             prompt([
@@ -153,10 +150,8 @@ const addEmp = () => {
             ])
                 .then( ( answers ) => {
 
-                    console.log( roles );
                     let empRole = roles.find(role => role.title === answers.newEmpRole);
-                    console.log( empRole );
-                    console.log( answers.newRoleManager );
+
                         let empRoleManager = roles.find( role => role.id === answers.newRoleManager );
                         connection.query('INSERT INTO employees SET ?', {
                             id: empRole.id,
@@ -166,8 +161,8 @@ const addEmp = () => {
                             role_id: empRole.id
                         }, (err, res) => {
                             if (err) throw err;
-                            // console.table( res );
-                                console.log( ( '\n\n\n*** New Employee successfully added! ***\n' ) )
+
+                                console.log( ( '\n\n\n*** New Employee successfully added! ***\n' ) );
                                 searchEmp();
                         });
 
@@ -274,7 +269,7 @@ const updateEmpRole = () => {
                                         ], (err, res) => {
                                             if (err) throw err;
                                             console.log(err);
-                                            console.table(res);
+                                            // console.table(res);
                                             console.log('\n\n\n*** Employee Role successfully udpated! ***\n')
 
                                             searchEmp();
@@ -312,7 +307,7 @@ const deleteEmp = () => {
                         },
                         (err, res) => {
                             if (err) throw err;
-                            console.table(res);
+                            // console.table(res);
                             console.log('\n\n\n*** Employee successfully removed ***\n')
 
                             searchEmp();
