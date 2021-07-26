@@ -1,8 +1,8 @@
-# SQL-Employee_Tracker
+# Employee Tracker
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)
 
-A content management system that provides a solution for managing company employees using node, inquirer, and MySQL.
+A back-end CLI content management system that provides a solution for managing company employees using node, inquirer, and MySQL.
 
 ## Table of Contents
 
