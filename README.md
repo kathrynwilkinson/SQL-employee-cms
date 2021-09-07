@@ -43,6 +43,7 @@ After installation, run 'npm start' in the command-line to access the prompts an
 ## Visuals
 
 Link to youtube DEMO:
+
 [![DEMO](http://img.youtube.com/vi/jmX0KIJsU0A/0.jpg)](http://www.youtube.com/watch?v=jmX0KIJsU0A "")
 
 ## Contributing
