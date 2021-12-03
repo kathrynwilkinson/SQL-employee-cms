@@ -50,7 +50,7 @@ Link to youtube DEMO:
 
 Sole Author: k.wilkinson
 
-This project was completed as an individual assignment for The Ohio State University Coding Boot Camp.
+If there's something you'd like to contribute to the project - send me a message and make a pull request!
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md)
 
