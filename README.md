@@ -58,7 +58,7 @@ If there's something you'd like to contribute to the project - send me a message
 
 Please feel free to contact me with any questions via email or LinkedIn.
 
-- Github: [NAHco-code](https://github.com/NAHco-code)
+- Github: [kathrynwilkinson](https://github.com/kathrynwilkinson)
 - LinkedIn: [kwilkinsonxx](https://www.linkedin.com/in/kwilkinsonxx/)
 - Email: [kathrynxwilk@gmail.com](kathrynxwilk@gmail.com)
 
