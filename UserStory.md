@@ -4,10 +4,9 @@ Developers are often tasked with creating interfaces that make it easy for non-d
 
 ## User Story
 
-```As a business owner
-I want to be able to view and manage the departments, roles, and employees in my company
-So that I can organize and plan my business
-```
+`As a business owner`
+`I want to be able to view and manage the departments, roles, and employees in my company`
+`So that I can organize and plan my business`
 
 ## Try It Yourself
 
@@ -37,22 +36,21 @@ Design the following database schema containing three tables:
 
 Build a command-line application that at a minimum allows the user to:
 
-  * Add departments, roles, employees
+* Add departments, roles, employees
 
-  * View departments, roles, employees
+* View departments, roles, employees
 
-  * Update employee roles
+* Update employee roles
 
 Bonus points if you're able to:
 
-  * Update employee managers
+* Update employee managers
 
-  * View employees by manager
+* View employees by manager
 
-  * Delete departments, roles, and employees
+* Delete departments, roles, and employees
 
-  * View the total utilized budget of a department -- ie the combined salaries of all employees in that department
-
+* View the total utilized budget of a department -- ie the combined salaries of all employees in that department
 
 How do you deliver this? Here are some guidelines:
 
@@ -64,7 +62,7 @@ How do you deliver this? Here are some guidelines:
 
 * You may wish to have a separate file containing functions for performing specific SQL queries you'll need to use. Could a constructor function or a class be helpful for organizing these?
 
-* You will need to perform a variety of SQL JOINS to complete this assignment, and it's recommended you review the week's activities if you need a refresher on this.
+* You will need to perform a variety of SQL JOINS to complete this project.
 
 ![Employee Tracker](Assets/employee-tracker.gif)
 
@@ -73,8 +71,6 @@ How do you deliver this? Here are some guidelines:
 * You may wish to include a `seed.sql` file to pre-populate your database. This will make development of individual features much easier.
 
 * Focus on getting the basic functionality completed before working on more advanced features.
-
-* Review the week's activities for a refresher on MySQL.
 
 * Check out [SQL Bolt](https://sqlbolt.com/) for some extra MySQL help.
 
