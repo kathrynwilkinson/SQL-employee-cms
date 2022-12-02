@@ -2,7 +2,7 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)
 
-A back-end CLI content management system that provides a solution for managing company employees using node, inquirer, and MySQL.
+A back-end ***Command Line Interface*** *Employee* ***Content-Management-System*** providing a solution for managing company employees. Application uses MySQL, node, and inquirer.
 
 ## Table of Contents
 
@@ -36,9 +36,9 @@ After installation, run 'npm start' in the command-line to access the prompts an
 
 ## Technologies
 
+- MySQL
 - node.js
 - inquirer
-- MySQL
 
 ## Visuals
 
@@ -56,7 +56,7 @@ If there's something you'd like to contribute to the project - send me a message
 
 ## Questions?
 
-Please feel free to contact me with any questions via email or LinkedIn.
+Get in contact with me via email or LinkedIn.
 
 - Github: [kathrynwilkinson](https://github.com/kathrynwilkinson)
 - LinkedIn: [kwilkinsonxx](https://www.linkedin.com/in/kwilkinsonxx/)
